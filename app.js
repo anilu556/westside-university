@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
     res.send("Hello University!!")
   })
 
-CORS
+//CORS
 app.use((request, response, next) => {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept, Authorization");
