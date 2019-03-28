@@ -5,10 +5,10 @@ const index = (req, res) =>  {
   Student
     .find()
     .exec()
-    .then(students => {
+    .then(data => {
       res.json({
-        students,
-        total: students.length
+        data,
+        total: data.length
       })
       .status(200)
     })
@@ -43,15 +43,15 @@ const index = (req, res) =>  {
         })
       }
 
-    const findBy = (req, res) => {
+    const findClass = (req, res) => {
         Student
-        
+
         .find({class: req.params.class})
         .exec()
-        .then( users => {
+        .then( data => {
           res.json({
-            type: 'User found by Id',
-            users
+            type: 'Students found by class',
+            data
           })
           .status(200)
         })
@@ -61,6 +61,24 @@ const index = (req, res) =>  {
         })
       }
 
+    const findBy = (req, res) => {
+        Student
+        
+        .find({_id: req.params.studentId})
+        .exec()
+        .then( data => {
+        res.json({
+          type: 'Student found by Id',
+          data
+        })
+        .status(200)
+      })
+        .catch(err => {
+        console.log(`Caught error: ${err}`);
+        return res.status(500).json(err)
+      })
+    }
+
 module.exports = {
-  index, create, findBy
+  index, create, findClass, findBy
 }
