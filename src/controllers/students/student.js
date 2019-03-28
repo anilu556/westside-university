@@ -43,6 +43,24 @@ const index = (req, res) =>  {
         })
       }
 
+    const findBy = (req, res) => {
+        Student
+        
+        .find({class: req.params.class})
+        .exec()
+        .then( users => {
+          res.json({
+            type: 'User found by Id',
+            users
+          })
+          .status(200)
+        })
+        .catch(err => {
+          console.log(`Caught error: ${err}`);
+          return res.status(500).json(err)
+        })
+      }
+
 module.exports = {
-  index, create
+  index, create, findBy
 }

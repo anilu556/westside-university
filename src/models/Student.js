@@ -6,7 +6,7 @@ const studentSchema = new Schema ({
   first_name: { type: String, required: true},
   last_name: { type: String, required: true},
   email: {type: String, unique: true},
-  class: {type: String, unique: true},
+  class: {type: String, required: true},
   grade: {type: String, required: true}
 })
 

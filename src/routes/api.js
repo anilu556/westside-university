@@ -5,8 +5,10 @@ const app = Router();
 const Students = require('../controllers/students/student')
 
 
-//managers routes
+//students routes
 app.get('/students', Students.index);
 app.post('/students', Students.create);
+app.get('/students/:class', Students.findBy);
+
 
 module.exports = app;
